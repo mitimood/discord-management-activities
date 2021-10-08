@@ -1,0 +1,35 @@
+
+{
+  
+  "token": "bot token here",
+
+  "prefix": "prefix of the bot here",
+
+  "mongoconect": "mongo string connect here",
+
+  "roles":{
+    "equipe_karaoke": "id here" ,
+    "capitaes_karaoke":"id here" ,
+    "mod_call":"id here",
+    "ajuda":"id here",
+    "equipe_poem": "id here",
+    "capitaes_poem": "id here",
+    "capitaes_arte": "id here",
+    "equipe_arte": "id here"
+  },
+  "channels":{
+    "karaoke_voice": "id here",
+    "karaoke_chat": "id here",
+    "equipe_karaoke": "id here",
+    "guild": "id here",
+    "poems_post": "id here",
+    "arte_post": "id here"
+  },
+  "xp_equipe_karaoke":{
+    "Text": "points value here",
+    "voice": "points value here",
+    "activities": "points value here",
+    "available_time": "points value here"
+  },
+  "max_call": "points value here"
+}

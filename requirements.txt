@@ -1,0 +1,7 @@
+discord~=1.7.3
+pymongo~=3.11.4
+tinydb~=4.5.0
+idna~=3.2
+dnspython~=1.16.0
+discord-py-slash-command~=2.3.2
+pytz~=2021.1
