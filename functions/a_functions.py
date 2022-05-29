@@ -18,7 +18,7 @@ if os.path.exists((os.getcwd() + "/config.json")):
 
 cluster = MongoClient(
     configData["mongoconect"])
-db = cluster["kamaibot"]
+db = cluster[configData["database_name"]]
 collection = db["activitykaraoke"]["tempdb"]
 
 

@@ -16,14 +16,7 @@ class cmd_off(commands.Cog):
     # Display user as unavailable and saves a time stamp of the available duration in mongodb
     @cog_ext.cog_slash(name="off",
                        description="Poe em estado de ocupado",
-                       guild_ids=guilds,
-                       permissions={
-                           configData["channels"]["guild"]: [
-                               create_permission(configData["roles"]["equipe_karaoke"], SlashCommandPermissionType.ROLE,
-                                                 True),
-                           ]
-                       },
-                       default_permission=False
+                       guild_ids=guilds
                        )
     async def _ocupado(self, ctx):
         id_author = ctx.author.id
@@ -39,10 +32,8 @@ class cmd_off(commands.Cog):
                 await ctx.send("Você agora está no modo ocupado")
             else:
                 await ctx.send("Você precisa ficar disponivel primeiro para poder ficar no ocupado")
-
-        except():
+        except:
             print("Problema ao registrar na mongodb")
-
 
 def setup(bot):
     bot.add_cog(cmd_off(bot))

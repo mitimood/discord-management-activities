@@ -64,15 +64,21 @@ class Karaoke(commands.Cog):
         elif regs_in_karaoke:
             caps = ctx.guild.get_role(configData["roles"]["capitaes_karaoke"]).members
             for cap in caps:
-                await cap.send(
-                    f"Pediram ajuda no karaoke, mas não tem ninguém disponivel e tem alguns organizadores no karaoke {regs_in_karaoke}\n<#{configData['channels']['karaoke_voice']}>")
-                caps_p.append(cap.mention)
+                try:
+                    await cap.send(
+                        f"Pediram ajuda no karaoke, mas não tem ninguém disponivel e tem alguns organizadores no karaoke {regs_in_karaoke}\n<#{configData['channels']['karaoke_voice']}>")
+                    caps_p.append(cap.mention)
+                except:
+                    print("error cap send")
                 await ctx.send("Já já vai vir alguem para ajudar")
         else:
             caps = ctx.guild.get_role(configData["roles"]["capitaes_karaoke"]).members
             for cap in caps:
-                await cap.send(
-                    f"Pediram ajuda no karaoke, mas não tem ninguém disponivel\n<#{configData['channels']['karaoke_voice']}>")
+                try:
+                    await cap.send(
+                        f"Pediram ajuda no karaoke, mas não tem ninguém disponivel\n<#{configData['channels']['karaoke_voice']}>")
+                except:
+                    print("error cap send")
             await ctx.send("Já já vai vir alguem para ajudar")
 
 

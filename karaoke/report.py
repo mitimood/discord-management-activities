@@ -12,7 +12,6 @@ class report(commands.Cog):
     @cog_ext.cog_slash(name="reporteligos",
                        description="Exibe a contagem de pontos dos eligos",
                        guild_ids=guilds,
-                       default_permission=False,
                        options=[
                            create_option(
                                name="days",
@@ -20,12 +19,7 @@ class report(commands.Cog):
                                option_type=4,
                                required=True
                            )
-                       ],
-                       permissions={
-                           configData["channels"]["guild"]: [
-                               create_permission(configData["roles"]["capitaes_karaoke"], 1, True),
-                           ]
-                       })
+                       ])
     async def _report(self, ctx, days: int):
         id_array = []
         for role in ctx.guild.roles:

@@ -17,13 +17,8 @@ class report(commands.Cog):
         self.bot = bot
 
     @cog_ext.cog_slash(name="reportNaberius",
-                       description="Poe em estado de disponivel",
+                       description="Envia o relatorio Naberius",
                        guild_ids=guilds,
-                       default_permission=False,
-                       permissions={
-                           configData["channels"]["guild"]: [
-                               create_permission(configData["roles"]["capitaes_arte"], SlashCommandPermissionType.ROLE, True)]
-                       }
                        )
     async def _report(self, ctx):
         members_id = []
