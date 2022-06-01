@@ -53,7 +53,7 @@ class report(commands.Cog):
 
         await ctx.send(report_msg)
         members_off_id = set(members_on_id) ^ set(members_id)
-        await ctx.send("Sem registro " + members_off_id.__str__())
+        await ctx.author.send("Sem registro " + members_off_id.__str__())
 
 
 def setup(bot):
