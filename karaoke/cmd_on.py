@@ -25,17 +25,18 @@ class available(commands.Cog):
 
         def days_hours_minutes(td):
             return td.days, td.seconds // 3600, (td.seconds // 60) % 60
-
-        doc = db.activitykaraoke.find_one(query)
-        if doc and "available" in doc and doc["available"]["state"]:
-            date_started = datetime.utcnow() - datetime.fromtimestamp(doc["available"]["since"])
-            date_days, date_hours, date_minutes = days_hours_minutes(date_started)
-            await ctx.send(f"Você já esta disponivel, a {date_days}d {date_hours}h {date_minutes}m")
-        else:
-            insert = {"$set": {"_id": id_author, "available": {"state": True, "since": stamp_time}}}
-            db.activitykaraoke.update_many(query, insert, upsert=True)
-            await ctx.send("Você agora esta disponivel")
-
+        try:
+            doc = db.activitykaraoke.find_one(query)
+            if doc and "available" in doc and doc["available"]["state"]:
+                date_started = datetime.utcnow() - datetime.fromtimestamp(doc["available"]["since"])
+                date_days, date_hours, date_minutes = days_hours_minutes(date_started)
+                await ctx.send(f"Você já esta disponivel, a {date_days}d {date_hours}h {date_minutes}m")
+            else:
+                insert = {"$set": {"_id": id_author, "available": {"state": True, "since": stamp_time}}}
+                db.activitykaraoke.update_many(query, insert, upsert=True)
+                await ctx.send("Você agora esta disponivel")
+        except:
+            print('Problemas ao registrar na mongodb')
 
 
 def setup(bot):
