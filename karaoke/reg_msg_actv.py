@@ -42,6 +42,5 @@ class Karaoke(commands.Cog):
             except:
                 print("Erro ao inserir atividade de mensagem na db")
 
-
 def setup(bot):
     bot.add_cog(Karaoke(bot))

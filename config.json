@@ -4,6 +4,8 @@
   "token": "bot token here",
 
   "prefix": "prefix of the bot here",
+  
+  "database_name" : "name of the database",
 
   "mongoconect": "mongo string connect here",
 

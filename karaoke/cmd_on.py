@@ -17,13 +17,6 @@ class available(commands.Cog):
     @cog_ext.cog_slash(name="on",
                        description="Poe em estado de disponivel",
                        guild_ids=guilds,
-                       default_permission=False,
-                       permissions={
-                           configData["channels"]["guild"]: [
-                               create_permission(configData["roles"]["equipe_karaoke"], SlashCommandPermissionType.ROLE,
-                                                 True),
-                           ]
-                       }
                        )
     async def _disponivel(self, ctx):  # Defines a new "context" (ctx) command called "ping."
         id_author = ctx.author.id
@@ -32,7 +25,6 @@ class available(commands.Cog):
 
         def days_hours_minutes(td):
             return td.days, td.seconds // 3600, (td.seconds // 60) % 60
-
         try:
             doc = db.activitykaraoke.find_one(query)
             if doc and "available" in doc and doc["available"]["state"]:
@@ -43,9 +35,8 @@ class available(commands.Cog):
                 insert = {"$set": {"_id": id_author, "available": {"state": True, "since": stamp_time}}}
                 db.activitykaraoke.update_many(query, insert, upsert=True)
                 await ctx.send("Você agora esta disponivel")
-
         except:
-            print("Problema ao registrar na mongodb")
+            print('Problemas ao registrar na mongodb')
 
 
 def setup(bot):

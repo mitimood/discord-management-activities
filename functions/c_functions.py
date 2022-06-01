@@ -7,7 +7,7 @@ from main import configData
 
 cluster = MongoClient(
     configData["mongoconect"])
-db = cluster["kamaibot"]
+db = cluster[configData['database_name']]
 collection = db["activitypoems"]
 
 

@@ -3,7 +3,6 @@ import os
 import discord
 from discord_slash import SlashCommand
 
-
 # make available the config file as configData object
 if os.path.exists((os.getcwd() + "/config.json")):
     with open("config.json") as f:
@@ -41,7 +40,6 @@ for filename in os.listdir('./painting'):
         client.load_extension(f"painting.{filename[:-3]}")
 
 from functions.a_functions import db_temp_CD
-
 
 # Reply when the bot is ready
 @client.event
